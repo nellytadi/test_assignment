@@ -6,7 +6,7 @@ use Tests\TestCase;
 use App\Account;
 use App\Transaction;
 
-class TransactionsTest extends TestCase
+class TransactionTest extends TestCase
 {
     /**
      * A basic unit test example.

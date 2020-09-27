@@ -19,7 +19,6 @@ class AccountController extends Controller
     {
         $request = $request->validated();
 
-
         $account = Account::create([
             'name' => $request['name'],
             'balance' => $request['balance']

@@ -3,11 +3,13 @@
 namespace Tests\Unit;
 
 
+use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 use App\Account;
 
 class AccountTest extends TestCase
 {
+    use RefreshDatabase;
     /**
      * A basic unit test example.
      *
