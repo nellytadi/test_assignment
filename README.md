@@ -20,6 +20,7 @@ TEST_DB_USERNAME=null
 TEST_DB_PASSWORD=null
 
 ```
+
 Ensure you have this configuration in your phpunit.xml file
 ```
 <php>
@@ -27,6 +28,7 @@ Ensure you have this configuration in your phpunit.xml file
     <env name="TEST_DB_CONNECTION" value="testing"/>
 </php
 ```
+Finally, create a **test.sqlite** file within your database directory.
 
 All tests can be executed using 
 ```composer test```
