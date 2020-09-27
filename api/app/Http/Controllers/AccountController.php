@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Account;
 
-use Illuminate\Http\Request;
+use App\Http\Requests\StoreAccount;
 
 class AccountController extends Controller
 {
@@ -15,15 +15,14 @@ class AccountController extends Controller
         return response()->json([$account, "message" => "Success"],200);
     }
 
-    public function store(Request $request)
+    public function store(StoreAccount $request)
     {
-        $request->validate([
-            'name' => 'required|min:5',
-            'balance' => 'required|numeric|min:0|not_in:0',
-        ]);
+        $request = $request->validated();
+
+
         $account = Account::create([
-            'name' => $request->input('name'),
-            'balance' => $request->input('balance')
+            'name' => $request['name'],
+            'balance' => $request['balance']
         ]);
 
         return response()->json([$account, "message" => "Created successfully"],201);

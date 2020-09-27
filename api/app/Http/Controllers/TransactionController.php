@@ -2,8 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Account;
+use App\Http\Requests\StoreTransaction;
 use App\Transaction;
-use Illuminate\Http\Request;
+
 
 class TransactionController extends Controller
 {
@@ -14,17 +15,14 @@ class TransactionController extends Controller
         return response()->json([$transaction, "message" => "Success"],200);
     }
 
-    public function storeTransactions(Request $request, $id)
+    public function storeTransactions(StoreTransaction $request, $id)
     {
-        $this->validate($request, [
-            'to' => 'required|integer|exists:accounts,id',
-            'amount' => 'required|numeric|min:0|not_in:0',
-            'details' => 'required|min:5',
-        ]);
 
-        $to = $request->input('to');
-        $amount = $request->input('amount');
-        $details = $request->input('details');
+        $request = $request->validated();
+
+        $to = $request['to'];
+        $amount = $request['amount'];
+        $details = $request['details'];
 
         $account = Account::find($id);
 
