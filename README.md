@@ -5,11 +5,11 @@ redirect to api directory and run
 ```
 composer install 
 ```
-next redirect to web directory and run 
+next, redirect to web directory and run 
 ```
 yarn install
 ```
-The app is set to run tests using sqlite Database, so please make sure you have that installed.
+The application is set to run tests using sqlite Database, so please make sure you have that installed.
 Then add this your .env file
 ```
 TEST_DB_CONNECTION=sqlite
@@ -22,7 +22,10 @@ TEST_DB_PASSWORD=null
 ```
 Ensure you have this configuration in your phpunit.xml file
 ```
-<env name="TEST_DB_CONNECTION" value="testing"/>
+<php>
+    ....
+    <env name="TEST_DB_CONNECTION" value="testing"/>
+</php
 ```
 
 All tests can be executed using 
