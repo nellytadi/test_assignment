@@ -1,6 +1,6 @@
 # Documentation
 
-To set up project 
+To set up this project, 
 redirect to api directory and run 
 ```
 composer install 
