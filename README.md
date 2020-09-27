@@ -9,7 +9,7 @@ next, redirect to web directory and run
 ```
 yarn install
 ```
-The application is set to run tests using sqlite Database, so please make sure you have that installed.
+The application is set to run tests using sqlite Database, so please make sure you have sqlite driver installed.
 Then add this your .env file
 ```
 TEST_DB_CONNECTION=sqlite
@@ -20,7 +20,6 @@ TEST_DB_USERNAME=null
 TEST_DB_PASSWORD=null
 
 ```
-
 Ensure you have this configuration in your phpunit.xml file
 ```
 <php>
