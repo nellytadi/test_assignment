@@ -91,6 +91,16 @@ return [
             'prefix_indexes' => true,
         ],
 
+        'testing' => [
+            'driver' =>env('TEST_DB_CONNECTION'),
+            'url' => env('TEST_DATABASE_URL'),
+            'host' => env('TEST_DB_HOST'),
+            'port' => env('TEST_DB_PORT'),
+            'database' => env('TEST_DB_DATABASE'),
+            'username' => env('TEST_DB_USERNAME'),
+            'password' => env('TEST_DB_PASSWORD'),
+        ],
+
     ],
 
     /*

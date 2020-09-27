@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,6 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+
+Route::post('accounts', 'AccountController@store');
+
+Route::get('accounts/{id}', 'AccountController@show');
+
+Route::get('accounts/{id}/transactions', 'TransactionController@showTransactions');
+
+Route::post('accounts/{id}/transactions', 'TransactionController@storeTransactions');
+
+Route::get('currencies', 'CurrencyController@showCurrencies');
