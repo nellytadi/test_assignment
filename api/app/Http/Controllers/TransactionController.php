@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 use App\Account;
 use App\Http\Requests\StoreTransaction;
 use App\Transaction;
-
+use App\Http\Resources\TransactionCollection;
 
 class TransactionController extends Controller
 {
@@ -12,7 +12,7 @@ class TransactionController extends Controller
     {
         $transaction = Transaction::where('from', $id)->orWhere('to', $id)->get();
 
-        return response()->json([$transaction, "message" => "Success"],200);
+        return response()->json([new TransactionCollection($transaction), "message" => "Success"],200);
     }
 
     public function storeTransactions(StoreTransaction $request, $id)
@@ -26,7 +26,7 @@ class TransactionController extends Controller
 
         $account = Account::find($id);
 
-        if ($amount < $account->balance) {
+        if ($amount <= $account->balance) {
 
             $account->balance = $account->balance - $amount;
             $account->save();
@@ -35,14 +35,14 @@ class TransactionController extends Controller
             $account_to->balance = $account_to->balance + $amount;
             $account_to->save();
 
-            $transaction = Transaction::create([
+            Transaction::create([
                 'from' => $id,
                 'to' => $to,
                 'amount' => $amount,
                 'details' => $details
             ]);
 
-            return response()->json([$transaction,'message' => 'Transfer successful'], 201);
+            return response()->json(['message' => 'Transfer successful'], 201);
         }
         return response()->json(['message' => 'Your Account Balance is insufficient'], 403);
 

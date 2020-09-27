@@ -45,7 +45,7 @@ class TransactionTest extends TestCase
 
         $url = "api/accounts/{$account['id']}/transactions";
         $this->call('GET', $url)
-            ->assertJson(["message" => "Success"])
+            ->assertJson([$account,"message" => "Success"])
             ->assertStatus(200);
     }
 }
